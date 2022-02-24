@@ -1,11 +1,11 @@
-import mozjpeg from 'imagemin-mozjpeg';
-import keepfolder from 'imagemin-keep-folder';
-import pngquant from 'imagemin-pngquant';
-import gifsicle from 'imagemin-gifsicle';
-import svgo from 'imagemin-svgo';
-import webp from 'imagemin-webp';
+import mozjpeg from "imagemin-mozjpeg";
+import keepfolder from "imagemin-keep-folder";
+import pngquant from "imagemin-pngquant";
+import gifsicle from "imagemin-gifsicle";
+import svgo from "imagemin-svgo";
+import webp from "imagemin-webp";
 
-keepfolder(['src/img/**/*.{jpg,png,gif,svg}'], {
+keepfolder(["src/img/**/*.{jpg,png,gif,svg}"], {
   plugins: [
     mozjpeg({
       quality: 85,
@@ -18,6 +18,6 @@ keepfolder(['src/img/**/*.{jpg,png,gif,svg}'], {
   ],
   use: [webp({})],
   replaceOutputDir: (output) => {
-    return output.replace(/img\//, '../dist/img/');
+    return output.replace(/img\//, "../public/img/");
   },
 });

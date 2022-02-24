@@ -7,6 +7,7 @@ block variables
 
 block title
   title #{data.recruit.title}
+
 block meta
   meta(name='description' content!=`${data.recruit.description}`)
   meta(property='og:title' content!=`${data.recruit.title}`)
@@ -21,14 +22,13 @@ block link
   link(rel='stylesheet' href='./css/top.min.css')
 
   //- js
-  script(src="https://unpkg.com/swiper@7/swiper-bundle.min.js")
-  script(src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.5.9/lottie.min.js")
+  //- script(src="https://unpkg.com/swiper@7/swiper-bundle.min.js")
   script(src="/recruit/js/main.min.js" defer)
   script(src="/recruit/js/top.min.js" defer)
 
 block header
-  //- include ../common/_header.pug
+  include ../common/_header.pug
 block contents
 
 block footer
-  //- include ../common/_footer.pug
+  include ../common/_footer.pug
