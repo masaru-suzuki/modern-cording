@@ -1,0 +1,214 @@
+/*========================================*/
+/*  全面に広がるリンク
+/*========================================*/
+.spread-link {
+  bottom: 0;
+  cursor: url(/recruit/img/common/cursor.svg) 24 24, pointer;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+/*========================================*/
+/*  行揃え
+/*========================================*/
+.u-ta-left-xs {
+  text-align: left;
+}
+.u-ta-center-xs {
+  text-align: center;
+}
+.u-ta-right-xs {
+  text-align: right;
+}
+.u-va-middle-xs {
+  vertical-align: middle;
+}
+
+/*========================================*/
+/*  font
+/*========================================*/
+.u-marker-pink-xs {
+  background-color: $color-pink-d;
+  color: $color-white-l;
+}
+.u-marker-gray-xs {
+  background-color: $color-gray-l;
+}
+
+/*========================================*/
+/*  max-width
+/*========================================*/
+.u-ma-488-xs {
+  max-width: 488px;
+}
+.u-ma-1120-xl {
+  @include mq(xlMin) {
+    max-width: 1120px;
+  }
+}
+
+/*========================================*/
+/*  margin
+/*========================================*/
+.u-ml-a-xs {
+  margin-left: auto;
+}
+.u-mr-a-xs {
+  margin-right: auto;
+}
+.u-mt-5-xs {
+  margin-top: 5px;
+}
+.u-mt-10-xs {
+  margin-top: 10px;
+}
+.u-mt-15-xs {
+  margin-top: 15px;
+}
+.u-mt-20-xs {
+  margin-top: 20px;
+}
+.u-mt-24-xs {
+  margin-top: 24px;
+}
+.u-mt-26-xs {
+  margin-top: 26px;
+}
+.u-mt-30-xs {
+  margin-top: 30px;
+}
+.u-mt-35-xs {
+  margin-top: 35px;
+}
+.u-mt-40-xs {
+  margin-top: 40px;
+}
+.u-mt-46-xs {
+  margin-top: 46px;
+}
+.u-mt-60-xs {
+  margin-top: 60px;
+}
+@include mq(smMin) {
+  .u-mt-10-sm {
+    margin-top: 10px;
+  }
+}
+@include mq(mdMin) {
+  .u-mt-20-md {
+    margin-top: 20px;
+  }
+}
+@include mq(lgMin) {
+  .u-mt-0-lg {
+    margin-top: 0px;
+  }
+  .u-mt-4-lg {
+    margin-top: 4px;
+  }
+  .u-mt-10-lg {
+    margin-top: 10px;
+  }
+  .u-mt-22-lg {
+    margin-top: 22px;
+  }
+  .u-mt-26-lg {
+    margin-top: 26px;
+  }
+  .u-mt-40-lg {
+    margin-top: 40px;
+  }
+  .u-ml-8-lg {
+    margin-left: 8px;
+  }
+  .u-mt-8-minus-lg {
+    margin-top: -8px;
+  }
+  .u-mt-14-minus-lg {
+    margin-top: -14px;
+  }
+  .u-mt-4-minus-lg {
+    margin-top: -4px;
+  }
+  .u-mr-60-lg {
+    margin-right: 60px;
+  }
+}
+
+/*========================================*/
+/*  要素タイプ
+/*========================================*/
+.u-d-bl-xs {
+  display: block;
+}
+.u-d-ib-xs {
+  display: inline-block;
+}
+.u-d-in-xs {
+  display: inline;
+}
+.u-d-n-xs {
+  display: none;
+}
+@include mq(lgMin) {
+  .u-d-bl-lg {
+    display: block;
+  }
+  .u-d-ib-lg {
+    display: inline-block;
+  }
+  .u-d-in-lg {
+    display: inline;
+  }
+  .u-d-n-lg {
+    display: none;
+  }
+}
+
+/*========================================*/
+/*  表示・非表示
+/*========================================*/
+@include mq(xsMax) {
+  .u-hidden-u-sm {
+    display: none;
+  }
+}
+@include mq(smMax) {
+  .u-hidden-u-md {
+    display: none;
+  }
+}
+@include mq(mdMax) {
+  .u-hidden-u-lg {
+    display: none;
+  }
+}
+@include mq(lgMax) {
+  .u-hidden-u-xl {
+    display: none;
+  }
+}
+@include mq(smMin) {
+  .u-hidden-o-sm {
+    display: none;
+  }
+}
+@include mq(mdMin) {
+  .u-hidden-o-md {
+    display: none;
+  }
+}
+@include mq(lgMin) {
+  .u-hidden-o-lg {
+    display: none;
+  }
+}
+@include mq(xlMin) {
+  .u-hidden-o-xl {
+    display: none;
+  }
+}

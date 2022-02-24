@@ -1,0 +1,22 @@
+@use "color";
+
+/*========================================*/
+/*  font-family
+/*========================================*/
+@font-face {
+  font-family: "NotoSans CondensedSemiBold";
+  src: url(/assets/fonts/NotoSans-CondensedSemiBold.ttf) format("truetype");
+}
+// Noto Sans Japanese 400(regular),500(medium),700(bold)
+$font-gothic: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "游ゴシック体", Meiryo, sans-serif;
+
+// NotoSans CondensedSemiBold
+$font-gothicAlphabet: "NotoSans CondensedSemiBold", Helvetica, Arial, "Hiragino Kaku Gothic ProN", "游ゴシック体",
+  Meiryo, sans-serif;
+
+// Noto Sans 700
+$font-gothicAlphabet2: "Noto Sans", Helvetica, Arial, "Hiragino Kaku Gothic ProN", "游ゴシック体", Meiryo, sans-serif;
+
+$font-color-black: color.$color-black-d;
+$font-color-gray-d: color.$color-gray-d;
+$font-color-gray-l: color.$color-gray-l2;

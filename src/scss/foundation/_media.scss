@@ -1,0 +1,92 @@
+/*========================================*/
+/*  break point
+/*========================================*/
+
+// breakpoint
+$xs-min: 360px;
+$sm-min: 560px;
+$md-min: 769px;
+$lg-min: 960px;
+$xl-min: 1366px;
+$xxl-min: 1920px;
+
+$xs-max: ($xs-min - 1); //359px
+$sm-max: ($sm-min - 1); //559px
+$md-max: ($md-min - 1); //768px
+$lg-max: ($lg-min - 1); //959px
+$xl-max: ($xl-min - 1); //1365px
+$xxl-max: ($xxl-min - 1); //1919px
+
+// - [ sm ] 〜560px ( スマートフォン縦 スマートフォン横・小さいタブレットの縦)
+// - [ md ] 〜959px（ タブレット・ノートPCなど ）
+// - [ lg ] 〜1365px（ ノートPC ）
+// - 1366px以上は余白が広がる仕様で、最大コンテンツ幅は1200px
+
+/*========================================*/
+/*  media query Mixin
+/*========================================*/
+
+@mixin mq($point, $direction: min) {
+  @if $point == smMin {
+    @media print, screen and (min-width: $sm-min) {
+      @content;
+    }
+  } @else if $point == mdMin {
+    @media print, screen and (min-width: $md-min) {
+      @content;
+    }
+  } @else if $point == lgMin {
+    @media print, screen and (min-width: $lg-min) {
+      @content;
+    }
+  } @else if $point == xlMin {
+    @media print, screen and (min-width: $xl-min) {
+      @content;
+    }
+  } @else if $point == xxlMin {
+    @media print, screen and (min-width: $xxl-min) {
+      @content;
+    }
+  } @else if $point == xsMax {
+    @media screen and (max-width: $xs-max) {
+      @content;
+    }
+  } @else if $point == smMax {
+    @media screen and (max-width: $sm-max) {
+      @content;
+    }
+  } @else if $point == mdMax {
+    @media screen and (max-width: $md-max) {
+      @content;
+    }
+  } @else if $point == lgMax {
+    @media screen and (max-width: $lg-max) {
+      @content;
+    }
+  } @else if $point == xlMax {
+    @media screen and (max-width: $xl-max) {
+      @content;
+    }
+  } @else if $point == xxlMax {
+    @media screen and (max-width: $xxl-max) {
+      @content;
+    }
+  }
+
+  // 変数で定義されていない値の場合
+  @else {
+    @if $direction == min {
+      @media print, screen and (min-width: $point) {
+        @content;
+      }
+    } @else if $direction == max {
+      @media screen and (max-width: $point) {
+        @content;
+      }
+    }
+  }
+}
+// example
+// @include mq(smMin) {
+//  …
+// }

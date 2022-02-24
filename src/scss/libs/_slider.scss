@@ -1,0 +1,104 @@
+@use "../foundation/font" as *;
+@use "../foundation/color" as *;
+@use "../foundation/media" as *;
+.section-works__slider {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  &-wrapper {
+    animation: loop 100s linear infinite;
+    display: flex;
+    flex-flow: row nowrap;
+    width: 2400px; // ul * 2 = 1200 * 2 = 2400px
+    @include mq(lgMin) {
+      width: 2720px;
+    }
+  }
+  &-block {
+    display: flex;
+    width: 1200px; // 高さが150pxになる分、widthを小さく li = 1360px * 150 / 170 * 100 = 1220px
+    @include mq(lgMin) {
+      width: 1360px;
+    }
+  }
+  li {
+    display: inline-block;
+    min-width: 300px;
+    @include mq(lgMin) {
+      min-width: 334px;
+    }
+    img {
+      height: 150px;
+      object-fit: cover;
+      width: auto;
+      @include mq(lgMin) {
+        height: 170px;
+      }
+    }
+  }
+}
+// 偶数行は逆再生
+.section-works__department {
+  &:nth-child(2n) {
+    & .section-works__slider-wrapper {
+      animation: loop_reverse 100s linear infinite;
+    }
+  }
+}
+
+.section-culture__container {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  &-wrapper {
+    animation: loop 100s linear infinite;
+    display: flex;
+    flex-flow: row nowrap;
+    width: 2440px; // ul * 2 = 1220 * 2 = 2440px
+  }
+  &-block {
+    display: flex;
+    width: 1220px; // li * 10 = 122px * 10 = 1220px
+  }
+  // 逆再生
+  //[SP]下段のみスタート位置を写真半分((106px + 16px) / 2 = 61px)ずらす
+  &:last-of-type {
+    & .section-culture__container-wrapper {
+      animation: loop_reverse 100s linear infinite;
+    }
+  }
+
+  li {
+    cursor: url(/recruit/img/common/cursor.svg) 24 24, pointer;
+    display: inline-block;
+    min-width: 300px;
+    @include mq(lgMin) {
+      min-width: 334px;
+    }
+    img {
+      height: 150px;
+      object-fit: cover;
+      width: auto;
+      @include mq(lgMin) {
+        height: 170px;
+      }
+    }
+  }
+}
+
+@keyframes loop {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+@keyframes loop_reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}

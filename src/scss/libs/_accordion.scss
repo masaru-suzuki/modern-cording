@@ -1,0 +1,241 @@
+@use "../foundation/font" as *;
+@use "../foundation/color" as *;
+@use "../foundation/media" as *;
+/* アコーディオン全体 */
+.accordion {
+  margin: 0 auto;
+  max-width: 1120px;
+  /* アコーディオン */
+  &__item {
+    background-color: $color-white-l;
+    border-radius: 8px;
+    cursor: url(/recruit/img/common/cursor.svg) 24 24, pointer;
+    margin-bottom: 12px;
+    @include mq(lgMin) {
+      background-color: inherit;
+      border-bottom: 1px solid $color-gray-d;
+      border-radius: inherit;
+      margin-bottom: inherit;
+    }
+    /* アコーディオン展開時の(-)アイコン */
+    &.is-active {
+      @include mq(lgMin) {
+        background-color: $color-white-l;
+        border-bottom: inherit;
+        margin-bottom: 10px; // アコーディオンがactiveな時だけ、marginをつける;
+        // transition: background-color 1s ease-out;
+      }
+      & .accordion__title-box {
+        &::after {
+          transform: rotate(0deg);
+          transform-origin: center;
+          @include mq(lgMin) {
+            transform: rotate(180deg);
+          }
+        }
+      }
+    }
+  }
+
+  /*=============================================
+  * アコーディオンのタイトル
+  =============================================*/
+  &__title-box {
+    cursor: url(/recruit/img/common/cursor.svg) 24 24, pointer;
+    font-weight: bold;
+    padding: 34px 60px 34px 54px;
+    position: relative;
+    // perspective: 2000px;
+    @include mq(lgMin) {
+      display: flex;
+      overflow: hidden;
+      padding: 28px 84px 25px;
+      perspective: inherit;
+      transition: 0.3s ease;
+      &-bg {
+        background: $color-gray-d2;
+        border-radius: 0 0 50px 0;
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        top: 0;
+        transform: scaleX(0);
+        width: calc(100% + 50px);
+        z-index: 0;
+      }
+      .accordion__item:not(.is-active) &:hover &-bg {
+        transform: scaleX(1);
+        transform-origin: left;
+        transition: transform 0.5s;
+      }
+    }
+    /* アイコン */
+    &::before {
+      background-color: $color-pink-d;
+      border-radius: 20px;
+      content: "";
+      height: 40px;
+      position: absolute;
+      right: 20px;
+      top: calc(50% - 40px / 2);
+      width: 40px;
+      @include mq(lgMin) {
+        content: none;
+      }
+    }
+    &::after {
+      background-image: url(/recruit/img/top/arrow-white.svg);
+      background-repeat: no-repeat;
+      background-size: contain;
+      content: "";
+      height: 10px;
+      position: absolute;
+      right: 33px;
+      top: calc(50% - 5px);
+      transform: rotate(180deg);
+      transition: transform 0.3s;
+      width: 14px;
+      @include mq(lgMin) {
+        background-image: url(/recruit/img/top/arrow-pink.svg);
+        height: 13px;
+        transform: rotate(0deg);
+        width: 22px;
+      }
+    }
+  }
+  &__title {
+    font-size: 3rem;
+    letter-spacing: 0.08em;
+    line-height: 1.5;
+    position: relative;
+    @include mq(lgMin) {
+      font-size: 3.2rem;
+    }
+  }
+  /* アコーディオンのタイトル */
+  &__sub-title {
+    color: $color-pink-d;
+    font-family: $font-gothicAlphabet;
+    font-size: 2.2rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    line-height: 1.3;
+    position: relative;
+    @include mq(lgMin) {
+      flex-basis: 110px;
+      font-size: 3.2rem;
+      line-height: 1.5;
+      margin-right: 24px;
+    }
+    // サブタイトルの左のナンバー
+    span {
+      font-size: 1.6rem;
+      font-weight: 600;
+      left: -30px;
+      letter-spacing: 0.01em;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      @include mq(lgMin) {
+        font-size: 1.1rem;
+        left: -40px;
+      }
+    }
+    // pcレイアウトの時の丸
+    &::before {
+      @include mq(lgMin) {
+        border: 1px solid $color-pink-d;
+        border-radius: 40px;
+        content: "";
+        height: 36px;
+        left: -53px;
+        position: absolute;
+        top: 6px;
+        width: 36px;
+      }
+    }
+  }
+
+  /*===========================================
+  * アコーディオンのコンテンツ（最初に隠れている）部分
+  ===========================================*/
+  &__content {
+    cursor: url(/recruit/img/common/cursor.svg) 24 24, pointer;
+    display: none;
+    padding: 0 18px 40px 18px; // borderの幅調整
+    @include mq(lgMin) {
+      padding: 0 60px 48px;
+    }
+    &.is-open {
+      display: block;
+    }
+  }
+  // borderの下のインナー
+  &__content-inner {
+    border-top: 1px solid $color-gray-d;
+    padding-top: 28px;
+    @include mq(lgMin) {
+      padding: 46px 54px 0;
+    }
+  }
+
+  // コンテンツのブロック
+  &__content-block {
+    position: relative;
+    @include mq(lgMin) {
+      align-items: flex-start;
+      display: flex;
+    }
+    h4 {
+      font-size: 1.6rem;
+      padding: 2px 4px;
+      @include mq(lgMin) {
+        margin-right: 34px;
+        margin-top: 3px;
+        padding: 1px 8px 2px;
+      }
+    }
+  }
+  // コンテンツのテキスト部分
+  &__content-block-text-area {
+    margin-top: 10px;
+    @include mq(lgMin) {
+      flex: 1;
+      margin-top: 0;
+    }
+    p {
+      font-size: 1.6rem;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      &.is-dot {
+        font-size: 1.5rem;
+        font-weight: 400;
+        letter-spacing: 0.04em;
+        padding-left: 10px;
+        position: relative;
+        @include mq(lgMin) {
+          font-size: 1.6rem;
+        }
+        &::before {
+          background-color: $color-pink-d;
+          border-radius: 4px;
+          content: "";
+          height: 4px;
+          left: 0px;
+          position: absolute;
+          top: 14px;
+          width: 4px;
+        }
+      }
+    }
+  }
+  // コンテンツの写真要素
+  &__content-img-box {
+    margin-top: 40px;
+    @include mq(lgMin) {
+      flex-basis: 212px;
+      margin-left: 7%; // 74px / 948px = 6.8%
+      margin-top: 0;
+    }
+  }
+}

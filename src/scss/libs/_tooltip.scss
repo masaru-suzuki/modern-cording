@@ -1,0 +1,82 @@
+@use "../foundation/font" as *;
+@use "../foundation/color" as *;
+@use "../foundation/media" as *;
+/* Tooltip container */
+.tooltip-wrapper {
+  position: relative;
+  @include mq(lgMin) {
+    height: 100%;
+    width: 100%;
+  }
+}
+.tooltip {
+  display: block;
+  width: 100%;
+  /* Tooltip text */
+  &__text-box {
+    background-color: $color-white-l;
+    border-radius: 6px;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.08);
+    color: $color-black-d;
+    left: calc(50vw - 172px);
+    max-width: 344px;
+
+    /* Fade in tooltip */
+    opacity: 0;
+    padding: 32px;
+    /* Position the tooltip text */
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    transition: opacity 0.3s;
+    visibility: hidden;
+    width: calc(100vw - 12px * 2);
+    z-index: 1;
+
+    @include mq(xsMax) {
+      left: 12px;
+    }
+    @include mq(lgMin) {
+      background-color: rgba($color: $color-white-l, $alpha: 0.9);
+      bottom: inherit;
+      max-width: 324px;
+      transform: inherit;
+    }
+
+    h4 {
+      color: $color-pink-d;
+      font-size: 2rem;
+      letter-spacing: 0.18em;
+    }
+    p {
+      font-size: 1.5rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      line-height: 1.86;
+    }
+
+    /* ばつボタン */
+    .js-tooltip-close-btn {
+      background-color: #ff4291;
+      border-radius: 20px;
+      cursor: url(/recruit/img/common/cursor.svg) 24 24, pointer;
+      height: 32px;
+      padding: 10px;
+      position: absolute;
+      right: -8px;
+      top: -18px;
+      transform: rotate(45deg);
+      width: 32px;
+      @include mq(lgMin) {
+        display: none;
+      }
+    }
+  }
+  &.view {
+    .tooltip__text-box {
+      opacity: 1;
+      transition: opacity 0.3s;
+      visibility: visible;
+    }
+  }
+}

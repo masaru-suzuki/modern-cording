@@ -1,0 +1,255 @@
+.site-header {
+  position: relative;
+  z-index: 9;
+  &__wrapper {
+    background-color: $color-white-l;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+  }
+  &__contents {
+    align-items: center;
+    display: flex;
+    height: 60px;
+    justify-content: space-between;
+
+    @include mq(lgMin) {
+      height: 98px;
+    }
+  }
+
+  &__brand {
+    align-items: center;
+    display: flex;
+    font-size: 1.3rem;
+    font-weight: 700;
+    padding-left: 14px;
+    @include mq(lgMin) {
+      font-size: 2rem;
+      margin-right: 40px;
+      padding-left: 34px;
+    }
+    img {
+      margin-right: 10px;
+      @include mq(lgMin) {
+        height: 32px;
+      }
+    }
+  }
+}
+// PCのナビゲーション
+.header-nav {
+  height: 100%;
+  @include mq(lgMin) {
+    align-items: center;
+    display: flex;
+    flex: 1;
+    max-width: 600px;
+    padding-right: 24px;
+  }
+  &__wrapper {
+    display: none;
+    @include mq(lgMin) {
+      align-items: center;
+      display: flex;
+      flex: 1;
+      justify-content: space-between;
+    }
+  }
+  &__item {
+    a {
+      position: relative;
+      &::before {
+        background-color: $color-black-d;
+        bottom: -4px;
+        content: "";
+        height: 2px;
+        left: 0;
+        position: absolute;
+        transition: 0.3s;
+        width: 0;
+      }
+      &:hover {
+        &::before {
+          transition: 0.3s;
+          width: 100%;
+        }
+      }
+    }
+    // ティザー版の時はcurrentの時の色を変えない
+    // &.is-current {
+    //   a {
+    //     color: $color-pink-d;
+    //     &::after {
+    //       position: absolute;
+    //       bottom: -14px;
+    //       left: calc(50% - 2px);
+    //       display: block;
+    //       width: 4px;
+    //       height: 4px;
+    //       content: '';
+    //       background-color: $color-pink-d;
+    //       border-radius: 50%;
+    //     }
+    //   }
+    // }
+    &.is-entry {
+      background-color: $color-pink-d;
+      height: 50px;
+      position: relative;
+      width: 118px;
+      a {
+        color: $color-white-l;
+        display: inline-block;
+        height: 100%;
+        line-height: 50px;
+        text-align: center;
+        width: 100%;
+        &::before {
+          background-color: $color-white-l;
+          bottom: 10px;
+          left: 22px;
+        }
+        &:hover {
+          &::before {
+            width: 64%;
+          }
+        }
+      }
+    }
+  }
+}
+
+// ハンバーガーメニュー
+.js-btn-trigger {
+  background-color: $color-gray-l;
+  display: block;
+  height: 100%;
+  position: relative;
+  width: 60px;
+  z-index: 1;
+  @include mq(lgMin) {
+    display: none;
+  }
+  span {
+    background-color: $color-black-d;
+    height: 2px;
+    left: 50%;
+    position: absolute;
+    width: 16px;
+    &:nth-of-type(1) {
+      left: 22px;
+      top: 28px;
+      transition: 0.3s;
+    }
+    &:nth-of-type(2) {
+      left: 22px;
+      top: 34px;
+      transition: 0.3s;
+    }
+  }
+  &.is-active {
+    span {
+      width: 20px;
+      &:nth-of-type(1) {
+        transform: translateY(3px) rotate(225deg);
+        transition: 0.3s;
+      }
+      &:nth-of-type(2) {
+        transform: translateY(-3px) rotate(-225deg);
+        transition: 0.3s;
+      }
+    }
+  }
+}
+
+/*----------------------------
+* メニュー開閉ボタン
+*----------------------------*/
+.global-nav {
+  background: $color-gray-l;
+  bottom: 0;
+  height: 100vh;
+  left: 0;
+  opacity: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transition: 0.3s;
+  visibility: hidden;
+  width: 100vw;
+  & .contents {
+    opacity: 0; // 背景が消える前にリンクが表示されているのを解消
+  }
+
+  &.is-active {
+    opacity: 1;
+    transition: 0.3s;
+    visibility: visible;
+    .contents {
+      height: 100vh;
+      opacity: 1;
+      padding-top: 70px;
+      width: 100vw;
+      z-index: 1;
+      z-index: 999;
+    }
+    & .global-nav__wrapper {
+      padding: 0 16px;
+      width: 100%;
+    }
+    & .global-nav__item {
+      border-bottom: 1px solid $color-gray-d;
+      font-size: 1.4rem;
+      padding: 16px 25px 18px;
+      position: relative;
+      width: 100%;
+      // dot
+      &::before {
+        background-color: $color-pink-d;
+        border-radius: 100%;
+        content: "";
+        height: 6px;
+        left: 6px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 6px;
+      }
+      &:active {
+        color: $color-pink-d;
+      }
+      a {
+        bottom: 0;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 100%;
+      }
+      &:first-of-type {
+        border-top: 1px solid $color-gray-d;
+      }
+    }
+    //ボタン
+    & .global-nav__btn-box {
+      margin-top: 36px;
+      padding: 0 16px;
+      text-align: center;
+      width: 100%;
+    }
+  }
+}
+
+//ハンバーガーメニューが開いているときに背景固定するクラスをbodyにつける
+.scroll-prevent {
+  height: 100%;
+  /*動き固定*/
+  position: fixed;
+  /*下2つで背景を元のサイズのまま表示することができる*/
+  width: 100%;
+  /*奥行きを管理*/
+  z-index: -1;
+}

@@ -1,0 +1,103 @@
+@mixin transition {
+  transition: 0.3s cubic-bezier(1, 0, 0, 1);
+}
+
+// モーダル開閉チェックボックス
+.modalCheck {
+  display: none;
+}
+
+// モーダルコンテンツ
+.modalWrap,
+.modalBg {
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  margin: auto;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+.modalWrap {
+  opacity: 0;
+  transition-property: opacity;
+  visibility: hidden;
+  will-change: opacity;
+  @include transition;
+}
+
+// モーダル背景（ラベルクリックで閉じる）
+.modalBg {
+  background-color: #000;
+  cursor: url(/recruit/img/common/cursor.svg) 24 24, pointer;
+  opacity: 0.7;
+  z-index: 2;
+  label {
+    bottom: 0;
+    display: block;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
+
+// モーダルコンテンツ
+.modalCon {
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: 3;
+}
+.modalInner {
+  cursor: default;
+  height: 100%;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  position: relative;
+}
+
+// モーダル閉じるボタン
+.modalCloseBtn {
+  cursor: url(/recruit/img/common/cursor.svg) 24 24, pointer;
+  padding: 0.5em;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 2;
+  label {
+    cursor: url(/recruit/img/common/cursor.svg) 24 24, pointer;
+  }
+}
+
+// モーダル閉じる
+.wrapper {
+  > *:not(.modalWrap) {
+    filter: blur(0px);
+  }
+  .modalWrap {
+    opacity: 0;
+    visibility: hidden;
+    @include transition;
+  }
+}
+
+// モーダル開く
+.wrapper {
+  &.is-open {
+    > *:not(.modalWrap) {
+      filter: blur(3px);
+    }
+
+    .modalWrap {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
