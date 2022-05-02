@@ -1,12 +1,23 @@
-# lee-tec
+# Web制作用のテンプレートです。
+npm scriptsでのコンパイル環境です。
+# コンパイル環境
 
-202203\_リーテック用リポジトリ
+- npm script
+- sass(dart-sass対応)
+- js
+- pug
 
-### コンパイル環境
+# 動作環境
 
-npm script
+- nodeバージョン管理: volta
+- node @16.15.0
 
-### node version
+# テスト環境
+herokuでのテスト環境を用意。
 
-- バージョン管理: volta
-- node @16.14.0
+# 未実装のタスク
+今後取り組みます。
+- TS対応
+- JS minify
+- CSS minify
+- 納品用ファイル生成
