@@ -1,63 +1,7 @@
 /*========================================*/
-/*  color
+/*  Color
 /*========================================*/
-// white
-$color-white-l: #fff;
-
-// pink
-$color-pink-d: #ff4291;
-
-// orange
-// $color-orange-d: #ef9c00;
-// $color-orange-m: #f8b419;
-// $color-orange-l: #f9aa41;
-
-// Gray
-$color-gray-d: #e0e0e0;
-$color-gray-d2: #e5e5e5;
-$color-gray-d3: #4c4c4c;
-$color-gray-d4: #4c4d4f;
-// $color-gray-m: #baad9c;
-$color-gray-l: #f0f0f0;
-$color-gray-l2: #888888;
-$color-gray-l3: #b1b1b1;
-$color-gray-l4: #e6e6e6;
-$color-gray-l5: #e2e2e2;
-// $color-gray-l3: #ded6cc;
-
-// blue
-$color-blue-d: #4f70d9;
-// $color-blue-m: #3781be;
-$color-blue-l: #22a1e5; // マイナビ様ロゴカラー
-
-// pink
-// $color-pink-d: #d98282;
-// $color-pink-m: #f09cab;
-// $color-pink-l: #f9efef;
-
-// darkBrown
-// $color-darkBrown-d: #786a5b;
-// $color-darkBrown-l: #96897c;
-
-// green
-$color-green-d: #003215;
-// $color-green-m: #94cc7c;
-// $color-green-l: #e4f2de;
-
-// black
-$color-black-d: #3d3d3d;
-$color-black-d2: #000;
-
-// yellow
-$color-yellow-d: #f5e553;
-$color-yellow-l: #ffd823;
-
-// brown
-$color-brown-d: #581804;
-
-// red
-$color-red-d: #bf0000;
-$color-red-l: #c11920;
-
-//gold
-$color-gold-d: #cd934c;
+:root {
+  --color-primary: #efefef;
+  --color-text-primary: #333;
+}

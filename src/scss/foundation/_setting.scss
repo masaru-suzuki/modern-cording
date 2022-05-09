@@ -1,42 +1,31 @@
-/*--------------------------------------
-  Common-Setting
----------------------------------------*/
+@use "color" as color;
+/*========================================*/
+/*  Common-Setting
+/*========================================*/
+// font-sizeはシステムデフォルトの16pxを基準に行う
 
-:root {
-  // overflow-y: scroll; // スクロールバーの有無でガタつかないように、常にスクロールバーを表示
-}
-html {
-  font-size: 10px;
-  font-weight: 500;
-}
-
-body,
-input,
-button,
-select,
-textarea {
-  font-family: YakuHanJP, "Noto Sans JP", sans-serif;
-}
+// body,
+// input,
+// button,
+// select,
+// textarea {
+// }
 body {
-  color: $color-black-d;
   font-size: 1.4rem;
   // color: $color-blue-d;
-  letter-spacing: 0.02em;
+  // letter-spacing: 0.02em;
 
   // 自動カーニングを有効に
   // 参考) https://ics.media/entry/14087
   // font-feature-settings: 'palt';
-  line-height: 2;
-  min-width: 320px;
-  padding-top: 60px; // header分paddingをつける
-  width: 100%;
+  // line-height: 1.5;
+  // min-width: 320px;
 
   // 出来るだけ禁則処理を保持する(英数字の単語の途中では折り返さない)
   // word-wrapの新しい仕様がoverflow-wrap
   // word-wrap: break-word;
   // overflow-wrap: break-word;
 
-  // background: #fff;
 
   // デバイスの向きによって文字サイズが変更されないようにする
   // -webkit-text-size-adjust: 100%;
@@ -45,36 +34,6 @@ body {
   // -webkit-font-smoothing: antialiased;
   // -moz-osx-font-smoothing: grayscale;
 
-  // &.is-fixed {
-  //   position: fixed;
-  // }
-  // @include mq(mdMin) {
-  //   min-width: 1240px;
-  //   font-size: 1.6px;
-  //   transform: scale(0.9);
-  //   .is-not-rn2021 & {
-  //     // font-size: 14px;
-  //   }
-  // }
-  @include mq(lgMin) {
-    padding-top: 98px; // header分paddingをつける
-  }
-}
-
-section[id] {
-  position: relative;
-  &::before {
-    content: "";
-    display: block;
-    height: 80px;
-    margin-top: -80px;
-  }
-  @include mq(lgMin) {
-    &::before {
-      height: 120px;
-      margin-top: -120px;
-    }
-  }
 }
 
 h1,
@@ -86,43 +45,17 @@ h6 {
   letter-spacing: 0.08em;
   line-height: 1.5; // 見出し系はパラついて見えるので行間を少し狭める
 }
+
 img {
   height: auto;
   max-width: 100%;
   vertical-align: bottom; // imgの下に意図しない余白がつかないように設定
 }
 
-button {
-  background: none;
-  border: none;
-  border-radius: 0;
-  &:hover {
-    cursor: url(/recruit/img/common/cursor.svg) 24 24, pointer;
-  }
-}
-
-li {
+ul,ol,li {
   list-style: none;
-}
-label {
-  // cursor: url(/recruit/img/common/cursor.svg) 24 24, pointer;
-}
-strong {
-  // font-weight: bold;
-}
-em {
-  // font-style: italic;
-}
-a,
-input[type="submit"],
-input[type="button"] {
-  color: $color-black-d;
-  cursor: url(/recruit/img/common/cursor.svg) 24 24, pointer;
-  text-decoration: none;
-  transition: 0.3s;
-}
-a:hover {
-  cursor: url(/recruit/img/common/cursor.svg) 24 24, pointer;
+  color: red;
+  background-color: blue;
 }
 
 // デフォルトのボックスモデルをボーダーボックスに変更
