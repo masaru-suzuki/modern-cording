@@ -181,7 +181,7 @@ ul, ol, li {
   }
 }
 
-.c-wrapContainer {
+.c-containerWrapper {
   width: min(92%, 1166px);
   margin-right: auto;
   margin-left: auto;
