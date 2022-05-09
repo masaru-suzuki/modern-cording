@@ -1,5 +1,17 @@
-.c-wrapContainer{
-  width: min(92%,1166px);
+.c-wrapContainer {
+  // 横幅と左右の余白: widthで調整するパターン
+  width: min(92%, 1166px);
   margin-right: auto;
   margin-left: auto;
+
+  // 横幅と左右の余白: paddingで調整するパターン
+  // box-sizing: content-boxだとSP幅の時はみ出る
+  // box-sizing: border-boxだとピッタリ1166pxにならない
+  // width: 100%;
+  // max-width: calc(1166px + 8%);
+  // padding-right: 4%;
+  // padding-left: 4%;
+
+  // 横幅と左右の余白: gridで調整するパターン
+  // max-width: inherit;
 }
