@@ -13,6 +13,8 @@
 body {
   font-size: 1.4rem;
   background-color: #eee;
+  color: #222;
+  font-family: "sans-serif";
   // color: $color-blue-d;
   // letter-spacing: 0.02em;
 
@@ -27,14 +29,12 @@ body {
   // word-wrap: break-word;
   // overflow-wrap: break-word;
 
-
   // デバイスの向きによって文字サイズが変更されないようにする
   // -webkit-text-size-adjust: 100%;
 
   // フォントのレンダリングを調整してキレイにみせる
   // -webkit-font-smoothing: antialiased;
   // -moz-osx-font-smoothing: grayscale;
-
 }
 
 h1,
@@ -43,8 +43,12 @@ h3,
 h4,
 h5,
 h6 {
-  letter-spacing: 0.08em;
+  letter-spacing: 0.02em;
   line-height: 1.5; // 見出し系はパラついて見えるので行間を少し狭める
+}
+
+p {
+  line-height: 1.8;
 }
 
 img {
@@ -54,10 +58,14 @@ img {
   vertical-align: bottom; // imgの下に意図しない余白がつかないように設定
 }
 
-ul,ol,li {
+ul,
+ol,
+li {
   list-style: none;
-  color: red;
-  background-color: blue;
+}
+
+button {
+  background-color: inherit;
 }
 
 // デフォルトのボックスモデルをボーダーボックスに変更
