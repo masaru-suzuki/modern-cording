@@ -1,4 +1,17 @@
 @use "../foundation/index" as *;
 
-.btn{
+.c-btn {
+  display: block;
+  width: 260px;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  font-size: 1.125rem;
+  text-align: center;
+  text-shadow: 0 0 6px #00000052;
+
+  &:hover {
+    filter: brightness(90%) contrast(120%);
+  }
 }

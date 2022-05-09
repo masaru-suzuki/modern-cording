@@ -5,10 +5,25 @@
 }
 
 .l-hero__container {
+  // 縦横中央配置：[grid]アイテムが複数の場合
   display: grid;
   align-content: center;
   justify-items: center;
   height: 100%;
+
+  // 縦横中央配置：[grid]アイテムが一つの場合
+  // place-items: center;
+
+  // 縦横中央配置：[flex]アイテムが複数の場合
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: center;
+  // align-items: center;
+
+  // 縦横中央配置：[flex]アイテムが一つの場合
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
 }
 
 .l-hero__title {
