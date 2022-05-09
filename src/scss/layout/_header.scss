@@ -1,5 +1,31 @@
 @use "../foundation/index" as *;
 
-.site-header {
-  background-color: beige;
+.l-header {
+  height: 112px;
+  background-color: #fff;
+}
+
+.l-header__container {
+  display: flex;
+  height: 100%;
+  // flexで設定するケース1
+  justify-content: space-between;
+  align-items: center;
+
+  // flexで設定するケース2
+  // justify-content: flex-start;
+  // & > .l-header__brand {
+  //   margin-right: auto;
+  // }
+
+  // gridで設定するケース
+  // display: grid;
+  // grid-auto-flow: column;
+  // grid-template-columns: 1fr;
+}
+
+.l-header__navBtn {
+  cursor: pointer;
+  font-size: 30px;
+  color: #aaa;
 }
