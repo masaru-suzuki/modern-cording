@@ -12,6 +12,7 @@
 // }
 body {
   font-size: 1.4rem;
+  background-color: #eee;
   // color: $color-blue-d;
   // letter-spacing: 0.02em;
 
@@ -47,6 +48,7 @@ h6 {
 }
 
 img {
+  display: block;
   height: auto;
   max-width: 100%;
   vertical-align: bottom; // imgの下に意図しない余白がつかないように設定
