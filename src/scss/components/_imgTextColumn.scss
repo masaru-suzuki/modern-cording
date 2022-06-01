@@ -1,0 +1,57 @@
+@use "../foundation/index" as *;
+.c-imgTextColumn {
+  padding: clamp_vw($min: 90) 0;
+  background-color: #fff;
+
+  & + & {
+    padding-top: 0;
+  }
+}
+
+.c-imgTextColumn__container {
+  display: flex;
+  flex-direction: column;
+  gap: clamp_vw($min: 45, $max: 80);
+
+  // grid version
+  display: grid;
+
+  @include media("md") {
+    flex-direction: row;
+    align-items: center;
+
+    // grid version
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+
+    &.c-imgTextColumn__container--reverse {
+      flex-direction: row-reverse;
+
+      // grid version
+      grid-template-columns: 2fr 1fr;
+    }
+  }
+}
+
+.c-imgTextColumn__text {
+  min-width: 17em;
+  flex: 1;
+
+  // grid version
+  .c-imgTextColumn__container--reverse & {
+    @include media("md") {
+      order: 2;
+    }
+  }
+}
+
+.c-imgTextColumn__img {
+  flex: 2;
+
+  // grid version
+  .c-imgTextColumn__container--reverse & {
+    @include media("md") {
+      order: 1;
+    }
+  }
+}

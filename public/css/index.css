@@ -244,6 +244,73 @@ button {
   margin-left: auto;
 }
 
+.c-imgTextColumn {
+  padding: clamp(5.625rem, 8.182vw, 7rem) 0;
+  background-color: #fff;
+}
+.c-imgTextColumn + .c-imgTextColumn {
+  padding-top: 0;
+}
+
+.c-imgTextColumn__container {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2.8125rem, 4.091vw, 3.5rem);
+  display: grid;
+}
+@media print, screen and (min-width: 768px) {
+  .c-imgTextColumn__container {
+    flex-direction: row;
+    align-items: center;
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+  }
+  .c-imgTextColumn__container.c-imgTextColumn__container--reverse {
+    flex-direction: row-reverse;
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+.c-imgTextColumn__text {
+  min-width: 17em;
+  flex: 1;
+}
+@media print, screen and (min-width: 768px) {
+  .c-imgTextColumn__container--reverse .c-imgTextColumn__text {
+    order: 2;
+  }
+}
+
+.c-imgTextColumn__img {
+  flex: 2;
+}
+@media print, screen and (min-width: 768px) {
+  .c-imgTextColumn__container--reverse .c-imgTextColumn__img {
+    order: 1;
+  }
+}
+
+.c-headingDecoration {
+  font-size: clamp(1.5rem, 2.182vw, 1.875rem);
+  min-height: 0vw;
+  font-weight: 400;
+}
+.c-headingDecoration::after {
+  display: block;
+  content: "";
+  width: 160px;
+  height: 0;
+  border-top: 1px solid #b72661;
+  margin-top: 0.6em;
+}
+.c-headingDecoration + p {
+  margin-top: 1em;
+  margin-bottom: 2em;
+  color: #707070;
+  font-family: "Montserrat", sans-serif;
+  font-size: fz(18);
+}
+
 /*========================================*/
 /*  行揃え
 /*========================================*/

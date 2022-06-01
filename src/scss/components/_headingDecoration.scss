@@ -1,0 +1,24 @@
+@use "../foundation/index" as *;
+
+.c-headingDecoration {
+  font-size: clamp_vw($min: 24);
+  min-height: 0vw;
+  font-weight: 400;
+
+  &::after {
+    display: block;
+    content: "";
+    width: 160px;
+    height: 0;
+    border-top: 1px solid #b72661;
+    margin-top: 0.6em;
+  }
+
+  & + p {
+    margin-top: 1em;
+    margin-bottom: 2em;
+    color: #707070;
+    font-family: "Montserrat", sans-serif;
+    font-size: fz(18);
+  }
+}
