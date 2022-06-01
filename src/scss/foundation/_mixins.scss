@@ -1,0 +1,256 @@
+@use "sass:math";
+
+// --------------------
+// Defined
+// --------------------
+$DEFAULT_FONT_SIZE: 16;
+$BREAKPOINT_TABLET: 768;
+$BREAKPOINT_PC: 1366;
+
+// --------------------
+// Utility Functions
+// --------------------
+
+@function rem($px) {
+  @return math.div($px, 16) * 1rem;
+}
+
+@function calcPercent($numerator, $denominator) {
+  @return math.div($numerator, $denominator) * 100;
+}
+
+@function calcVw($numerator, $denominator) {
+  @return math.div($numerator, $denominator) * 100vw;
+}
+
+@function roundNumber($num) {
+  @return math.div(round($num * 1000), 1000);
+}
+
+// --------------------
+// Functions
+// --------------------
+
+@function vw($px, $vw: 1280) {
+  @return math.div($px, $vw) * 100vw;
+}
+
+@function fluidMaxSize($px, $vw: 1280) {
+  @return min(vw($px, $vw), rem($px));
+}
+
+@function fluidMinSize($px, $vw: 1280) {
+  @return max(vw($px, $vw), rem($px));
+}
+
+@function stuffHalfLineHeight($fz, $lh) {
+  @return rem(math.div(($fz * $lh - $fz), 2) * -1);
+}
+
+@function clamp_vw($min, $middle: 0, $max: 0) {
+  $minWidth: 1100;
+  $BREAKPOINT_PC: 1366;
+
+  $val_vw_fz: roundNumber(calcPercent($min, $minWidth));
+  $val_max_fz: round($BREAKPOINT_PC * math.div($val_vw_fz, 100));
+
+  // 引数が指定されていなかったら$numから算出する
+  @if ($max) {
+    $max: rem($val_max_fz);
+    $middle: $val_vw_fz;
+  } @else {
+    $max: rem($max);
+    $middle: $middle;
+  }
+
+  @return clamp(#{rem($min)}, #{$middle}vw, #{$max});
+}
+
+// --------------------
+// Mixin
+// --------------------
+
+$breakpoint-min: (
+  "sm": "print, screen and (min-width: 480px)",
+  "md": "print, screen and (min-width: 768px)",
+  "lg": "print, screen and (min-width: 960px)",
+  "xl": "print, screen and (min-width: 1280px)",
+);
+
+@mixin media($breakpoint: lg) {
+  @media #{map-get($breakpoint-min, $breakpoint)} {
+    @content;
+  }
+}
+
+@mixin scrollMarginTop() {
+  scroll-margin-top: var(--header-height-sp);
+
+  @include media() {
+    scroll-margin-top: var(--header-height-pc-tight);
+  }
+}
+
+// Button Animation
+@mixin bgSlideAnimation() {
+  display: block;
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 100%;
+  background-color: var(--color-secondary);
+  transition: width 0.2s;
+}
+
+@mixin bgSlideAnimation-hover() {
+  width: 100%;
+}
+
+@mixin lineAnimation() {
+  position: absolute;
+  content: "";
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-main);
+  transition: 0.2s ease;
+}
+
+@mixin lineAnimation-hover() {
+  width: 100%;
+}
+
+@mixin iconExpandTrue() {
+  .c-icon-expand {
+    &::after {
+      transform: none;
+    }
+  }
+}
+
+@mixin iconBlank() {
+  &::after {
+    display: inline-block;
+    content: "";
+    width: rem(16);
+    height: rem(16);
+    background: url("/assets2022/images/icon_blank.svg") no-repeat left top / 100% 100%;
+  }
+}
+
+@mixin iconZoom() {
+  &::after {
+    display: block;
+    content: "";
+    width: 32px;
+    height: 32px;
+    background: var(--color-main) url("/assets/images/icon_zoom.svg") no-repeat 7px 7px / 19px 19px;
+    color: #fff;
+  }
+}
+
+@mixin hoverAction($name: "transparent") {
+  @if $name == "transparent" {
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  @if $name == "fill-in" {
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
+
+@mixin headingLeftBorder($line-height, $width: 4px) {
+  &::before {
+    display: block;
+    content: "";
+    position: absolute;
+    top: calc(50%);
+    left: 0;
+    height: calc(100% + ((1 - #{$line-height}) * 1em) + rem(6)); //+6は補正：文字高ママでいいなら不要
+    width: $width;
+    background-color: var(--color-main);
+    transform: translateY(calc(-50% + rem(1))); //+1はNoto Sans用の補正（やや下ズレするため）
+  }
+}
+
+@mixin lineHeightCrop($line-height) {
+  &::before {
+    display: block;
+    width: 0;
+    height: 0;
+    margin-top: calc((1 - #{$line-height}) * 0.5em);
+    content: "";
+  }
+
+  &::after {
+    display: block;
+    width: 0;
+    height: 0;
+    margin-bottom: calc((1 - #{$line-height}) * 0.5em);
+    content: "";
+  }
+}
+
+@mixin jaStringBreakControl() {
+  span:not([class]) {
+    display: inline-block;
+  }
+
+  span.t-jaStringBr-sp {
+    display: inline-block;
+
+    @include media() {
+      display: inline;
+    }
+  }
+
+  span.t-jaStringBr-pc {
+    @include media() {
+      display: inline-block;
+    }
+  }
+}
+
+@mixin sectionSideBorders($sideMargin: "default", $height: "default") {
+  @if $sideMargin == "default" {
+    $sideMargin: calc((100% - fluidMaxSize(1200)) / 2);
+  }
+
+  @if $height == "last" {
+    $height: calc(100% + rem(160));
+  } @else {
+    $height: 100%;
+  }
+
+  position: relative;
+
+  &::before,
+  &::after {
+    position: absolute;
+    top: 0;
+    display: block;
+    content: "";
+    width: 1px;
+    height: $height;
+    background-color: var(--color-side-border);
+  }
+
+  &::before {
+    left: $sideMargin;
+  }
+
+  &::after {
+    right: $sideMargin;
+  }
+}
