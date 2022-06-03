@@ -18,6 +18,6 @@ keepfolder(["src/img/**/*.{jpg,png,gif,svg}"], {
   ],
   use: [webp({})],
   replaceOutputDir: (output) => {
-    return output.replace(/img\//, "../public/img/");
+    return output.replace(/img\//, "../docs/img/");
   },
 });
