@@ -105,9 +105,20 @@ q:after {
 /*========================================*/
 /*  media query Mixin
 /*========================================*/
+/**
+* 最小のサイズを渡すと、clampを返す関数
+* 推奨値と最大値を設定することもできる
+* 推奨値や最大値が設定されたときには、そちらが優先される
+* 最大値が設定されていた場合、推奨値は最大値に合わせる
+*/
 /*========================================*/
 /*  Common-Setting
 /*========================================*/
+:root {
+  --v-space: clamp(5.625rem, 11.719vw, 10rem);
+  --font-gothic: "Montserrat", sans-serif;
+}
+
 body {
   font-size: 1.4rem;
   background-color: #eee;
@@ -205,7 +216,7 @@ button {
 
 .l-hero__title {
   margin-bottom: 42px;
-  font-family: "Montserrat", sans-serif;
+  font-family: var(--font-gothic);
   font-size: clamp(3rem, 5vw, 4.25rem);
   min-height: 0vw;
   font-weight: 400;
@@ -239,13 +250,14 @@ button {
 }
 
 .c-containerWrapper {
+  position: relative;
   width: min(92%, 1166px);
   margin-right: auto;
   margin-left: auto;
 }
 
 .c-imgTextColumn {
-  padding: clamp(5.625rem, 8.182vw, 7rem) 0;
+  padding: var(--v-space) 0;
   background-color: #fff;
 }
 .c-imgTextColumn + .c-imgTextColumn {
@@ -255,7 +267,7 @@ button {
 .c-imgTextColumn__container {
   display: flex;
   flex-direction: column;
-  gap: clamp(2.8125rem, 4.091vw, 3.5rem);
+  gap: clamp(2.8125rem, 5.857vw, 5rem);
   display: grid;
 }
 @media print, screen and (min-width: 768px) {
@@ -291,7 +303,7 @@ button {
 }
 
 .c-headingDecoration {
-  font-size: clamp(1.5rem, 2.182vw, 1.875rem);
+  font-size: clamp(1.5rem, 3.125vw, 2.6875rem);
   min-height: 0vw;
   font-weight: 400;
 }
@@ -309,6 +321,26 @@ button {
   color: #707070;
   font-family: "Montserrat", sans-serif;
   font-size: fz(18);
+}
+
+.c-posts {
+  padding: var(--v-space) 0;
+  background-color: #f3f1ed;
+}
+
+.c-headingLv2 {
+  position: absolute;
+  top: calc((var(--v-space) + 0.8em) * -1);
+  font-family: --font-gothic;
+  font-size: clamp(2.5rem, 3.906vw, 1.875rem);
+  font-size: clamp(0.625rem, 3.906vw, 1.875rem);
+  min-height: 0vw;
+  font-weight: 300;
+}
+.c-headingLv2 > span {
+  display: block;
+  color: #666;
+  font-size: 1.125rem;
 }
 
 /*========================================*/

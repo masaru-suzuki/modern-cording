@@ -28,7 +28,7 @@
 
 .l-hero__title {
   margin-bottom: 42px;
-  font-family: "Montserrat", sans-serif;
+  font-family: var(--font-gothic);
   font-size: clamp(3rem, 5vw, 4.25rem);
   min-height: 0vw;
   font-weight: 400;

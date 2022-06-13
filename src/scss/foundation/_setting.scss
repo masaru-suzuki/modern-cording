@@ -1,15 +1,17 @@
-@use "color" as color;
+// @use "color" as color;
+// @use "./mixins" as mixin;
+@use "mixins" as mixin;
+
 /*========================================*/
 /*  Common-Setting
 /*========================================*/
+:root {
+  --v-space: #{mixin.clamp_vw($min: 90)};
+  --font-gothic: "Montserrat", sans-serif;
+}
+
 // font-sizeはシステムデフォルトの16pxを基準に行う
 
-// body,
-// input,
-// button,
-// select,
-// textarea {
-// }
 body {
   font-size: 1.4rem;
   background-color: #eee;

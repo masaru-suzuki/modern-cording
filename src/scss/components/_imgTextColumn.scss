@@ -1,6 +1,6 @@
 @use "../foundation/index" as *;
 .c-imgTextColumn {
-  padding: clamp_vw($min: 90) 0;
+  padding: var(--v-space) 0;
   background-color: #fff;
 
   & + & {
