@@ -1,0 +1,17 @@
+@use "../foundation/index" as *;
+
+.c-headingLv2 {
+  position: absolute;
+  top: calc((var(--v-space) + 0.8em) * -1);
+  font-family: --font-gothic;
+  font-size: clamp_vw($min: 40, $middle: 30);
+  font-size: clamp_vw($min: 10, $middle: 30);
+  min-height: 0vw;
+  font-weight: 300;
+
+  & > span {
+    display: block;
+    color: #666;
+    font-size: rem(18);
+  }
+}
