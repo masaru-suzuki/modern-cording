@@ -23,6 +23,8 @@ $BREAKPOINT_PC: 1366;
   @return math.div($numerator, $denominator) * 100vw;
 }
 
+// 小数点3桁にする
+// ex) 123.456789 => 123.457
 @function roundNumber($num) {
   @return math.div(round($num * 1000), 1000);
 }
@@ -47,23 +49,65 @@ $BREAKPOINT_PC: 1366;
   @return rem(math.div(($fz * $lh - $fz), 2) * -1);
 }
 
+/**
+* 最小のサイズを渡すと、clampを返す関数
+* 推奨値と最大値を設定することもできる
+* 推奨値や最大値が設定されたときには、そちらが優先される
+* 最大値が設定されていた場合、推奨値は最大値に合わせる
+*/
 @function clamp_vw($min, $middle: 0, $max: 0) {
-  $minWidth: 1100;
-  $BREAKPOINT_PC: 1366;
+  // 最小値から滑らかにサイズが上がるように計算されたvw
+  $calculated_middle_fz_for_min: roundNumber(calcPercent($min, $BREAKPOINT_TABLET));
 
-  $val_vw_fz: roundNumber(calcPercent($min, $minWidth));
-  $val_max_fz: round($BREAKPOINT_PC * math.div($val_vw_fz, 100));
+  // 最大値に滑らかに移行するように計算されたvw
+  $calculated_middle_fz_for_max: roundNumber(calcPercent($max, $BREAKPOINT_PC));
 
-  // 引数が指定されていなかったら$numから算出する
-  @if ($max) {
-    $max: rem($val_max_fz);
-    $middle: $val_vw_fz;
+  // tabletサイズの時に計算された推奨値
+  $calculated_middle_fz_for_middle: roundNumber(calcPercent($middle, $BREAKPOINT_TABLET));
+
+  // $minがPC幅になったときのサイズを計算
+  $calculated_max_fz: round($BREAKPOINT_PC * math.div($calculated_middle_fz_for_min, 100));
+
+  /**
+  最小値
+  */
+  $min_size: rem($min);
+
+  /**
+  * 推奨値
+  * 推奨値が指定されていなかったら、最小値から算出する
+  */
+  $middle_fz: $calculated_middle_fz_for_min;
+  @if ($middle != 0) {
+    $middle_fz: $calculated_middle_fz_for_middle;
+    @debug "middleあり";
+    @debug $middle_fz;
   } @else {
-    $max: rem($max);
-    $middle: $middle;
+    @debug "middleなし";
+    @if ($max != 0) {
+      @debug "middleなし+maxあり";
+      $middle_fz: $calculated_middle_fz_for_max;
+      @debug $middle_fz;
+    }
   }
 
-  @return clamp(#{rem($min)}, #{$middle}vw, #{$max});
+  /**
+  * 最大値
+  * 最大値が指定されていなかったら最小値から算出する
+  * 最大値が設定されていない、かつ、推奨値が設定されている場合は、推奨値を最大値とする
+  */
+  $max_fz: rem($calculated_max_fz);
+  @if ($max != 0) {
+    $max_fz: rem($max);
+    @debug "maxあり";
+    @debug $max_fz;
+  } @else {
+    @if ($middle != 0) {
+      $max_fz: rem($middle);
+    }
+  }
+
+  @return clamp(#{$min_size}, #{$middle_fz}vw, #{$max_fz});
 }
 
 // --------------------
