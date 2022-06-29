@@ -1,0 +1,32 @@
+extends ../../default/_default.pug
+
+block variables
+  include ../../data/_data.pug
+  - var isTop = true;
+  - var page = "top";
+
+block title
+  title #{data.recruit.title}
+
+block meta
+  meta(name='description' content!=`${data.recruit.description}`)
+  meta(property='og:title' content!=`${data.recruit.title}`)
+  meta(property='og:description' content!=`${data.recruit.description}`)
+  meta(property='og:url' content=`${data.recruit.url}`)
+  meta(property='og:image' content=`${data.recruit.image}`)
+
+block link
+  //- css
+  link(rel='stylesheet' href='/css/index.css')
+
+  //- js
+  //- script(src="/recruit/js/main.min.js" defer)
+  script(src="/js/index.js" defer)
+
+block header
+  include ../../common/_header.pug
+block contents
+  include _entry.pug
+
+block footer
+  include ../../common/_footer.pug
