@@ -1,0 +1,95 @@
+{
+  "before": {
+    "prefix": "bfr",
+    "body": ["&::before {", "\tcontent: '';", "\t$1", "}"],
+    "description": "create before class"
+  },
+  "after": {
+    "prefix": "aft",
+    "body": ["&::after {", "\tcontent: '';", "\t$1", "}"],
+    "description": "create after class"
+  },
+  "boxShadow": {
+    "prefix": "shadow",
+    "body": ["box-shadow: ${1:2px} ${2:2px} ${3:5px} ${4:5px} ${5:#222};"],
+    "description": "set box-shadow"
+  },
+  "backGroundImage": {
+    "prefix": "bgi",
+    "body": ["background: url($1) no-repeat center center/cover;"],
+    "description": "set background-image"
+  },
+  "absolute-Center": {
+    "prefix": "abso-c",
+    "body": ["position: absolute;", "top: 50%;", "left: 50%;", "transform: translate(-50%, -50%);"]
+  },
+  "absolute-VerticalCenter": {
+    "prefix": "abso-vc",
+    "body": ["position: absolute;", "top: 50%;", "left: $1;", "transform: translateY(-50%);"]
+  },
+  "absolute-HorizontalCenter": {
+    "prefix": "abso-hc",
+    "body": ["position: absolute;", "top: $1;", "left: 50%;", "transform: translateX(-50%);"]
+  },
+  "before-image": {
+    "prefix": "beforeimg",
+    "body": [
+      "&::before {",
+      "position: absolute;",
+      "top: $1;",
+      "left: $2;",
+      "transform: translate($3)",
+      "content: \"\";",
+      "width: $4;",
+      "height: $5;",
+      "background-image: url($6) no-repeat center center/cover;",
+      "}"
+    ],
+    "description": "before要素の使用"
+  },
+  "fontawesome": {
+    "prefix": "fontawesome",
+    "body": [
+      "&::before {",
+      "position: absolute;",
+      "top: 30px;",
+      " left: 30px;",
+      "content: \"\f054\";",
+      "font-family: \"Font Awesome 5 Free\";",
+      "font-weight: 900;",
+      "font-size: 6px;",
+      "}"
+    ],
+    "description": "before要素の使用"
+  },
+  "var(color)": {
+    "prefix": "var-c",
+    "body": ["var(--color-$1)"],
+    "description": "colorの変数"
+  },
+  "responsive sm-up": {
+    "prefix": "smu",
+    "body": ["@include media('sm') {$1", "}"],
+    "description": "メディアクエリのscss mixinの使用"
+  },
+  "responsive mq-up": {
+    "prefix": "mdu",
+    "body": ["@include media('md') {$1", "}"],
+    "description": "メディアクエリのscss mixinの使用"
+  },
+  "responsive lg-up": {
+    "prefix": "lgu",
+    "body": ["@include media('lg') {$1", "}"],
+    "description": "メディアクエリのscss mixinの使用"
+  },
+  "font-size": {
+    "prefix": "fz",
+    "body": ["font-size: rem($1);"],
+    "description": "font-sizeのmixin"
+  },
+  "not supports": {
+    "prefix": "notsupport",
+    "body": "@supports not ($1: $2) {$3}",
+    "description": "サポート外のプロパティ設定用"
+  }
+}

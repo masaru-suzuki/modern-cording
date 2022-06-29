@@ -201,6 +201,70 @@ button {
   color: #aaa;
 }
 
+.l-footer {
+  padding: 4.375rem 0;
+  background-color: #fff;
+  color: #707070;
+  font-size: 0.8125rem;
+}
+
+.l-footer__container {
+  display: grid;
+  gap: 3.125rem;
+  justify-items: center;
+}
+@media print, screen and (min-width: 768px) {
+  .l-footer__container {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto auto;
+    gap: 1.25rem;
+    justify-items: start;
+  }
+}
+
+@media print, screen and (min-width: 768px) {
+  .l-footer__site {
+    margin-bottom: 1.25rem;
+  }
+}
+
+.l-footer__sns {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 1.5rem;
+}
+@media print, screen and (min-width: 768px) {
+  .l-footer__sns {
+    grid-column: 2;
+    grid-row: 1/span 3;
+    justify-self: end;
+    align-self: center;
+  }
+}
+
+.l-footer__snsIcon {
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  aspect-ratio: 1/1;
+  clip-path: circle(50%);
+  color: #fff;
+  background-color: #ccc;
+}
+@supports not (aspect-ratio: 1/1) {
+  .l-footer__snsIcon {
+    height: 36;
+  }
+}
+
+.l-footer__menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.25rem;
+}
+
 .l-hero {
   height: 650px;
   background-position: center center;
@@ -226,12 +290,6 @@ button {
 
 .l-hero__lead {
   margin-bottom: 72px;
-}
-
-@media print, screen and (min-width: 769px) {
-  .footer {
-    background-color: gray;
-  }
 }
 
 .c-btn {
@@ -558,6 +616,21 @@ button {
     display: none;
   }
 }
+/*========================================*/
+/* アクセシビリティ
+/*========================================*/
+.u-srOnly {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
 /* ==========================================================================
   Foundation
   ========================================================================== */

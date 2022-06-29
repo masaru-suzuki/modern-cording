@@ -1,9 +1,58 @@
 @use "../foundation/index" as *;
 
-.footer {
+.l-footer {
+  padding: rem(70) 0;
+  background-color: #fff;
+  color: #707070;
+  font-size: rem(13);
+}
 
-  @include mq(mdMin) {
-    background-color: gray;
+.l-footer__container {
+  display: grid;
+  gap: rem(50);
+  justify-items: center;
+
+  @include media("md") {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto auto;
+    gap: rem(20);
+    justify-items: start;
   }
+}
 
+.l-footer__site {
+  @include media("md") {
+    margin-bottom: rem(20); // アイコンとメニューの下を揃えるため
+  }
+}
+.l-footer__sns {
+  display: flex;
+  gap: rem(24);
+  font-size: rem(24);
+
+  @include media("md") {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    // grid-row: 1 / -1; <= 同義
+    // grid-row: 1 / 4; <= 同義
+    justify-self: end;
+    align-self: center;
+  }
+}
+
+.l-footer__snsIcon {
+  @include circleIcon(36);
+  color: #fff;
+  background-color: #ccc;
+}
+
+.l-footer__menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  // display: grid;
+  // justify-content: center;
+  // grid-template-columns: repeat(auto-fit, minmax(6em, auto));
+  gap: rem(20);
 }
