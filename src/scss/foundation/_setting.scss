@@ -37,6 +37,11 @@ body {
   // フォントのレンダリングを調整してキレイにみせる
   // -webkit-font-smoothing: antialiased;
   // -moz-osx-font-smoothing: grayscale;
+
+  .open & {
+    position: fixed;
+    overflow: hidden;
+  }
 }
 
 h1,

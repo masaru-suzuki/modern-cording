@@ -11,6 +11,10 @@
   text-align: center;
   text-shadow: 0 0 6px #00000052;
 
+  &.-accent {
+    background-color: #b72661;
+  }
+
   &:hover {
     filter: brightness(90%) contrast(120%);
   }

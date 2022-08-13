@@ -44,4 +44,85 @@
   cursor: pointer;
   font-size: 30px;
   color: #aaa;
+
+  @include media("md") {
+    display: none;
+  }
+
+  .fa-bars {
+    display: revert;
+  }
+
+  .fa-times {
+    display: none;
+  }
+
+  .open & {
+    z-index: 110;
+    color: #fff;
+    transform: translateX(-10px);
+
+    .fa-bars {
+      display: none;
+    }
+
+    .fa-times {
+      display: revert;
+    }
+  }
+}
+
+.hamburger--collapse {
+  .hamburger-inner {
+    background-color: currentColor;
+
+    &::before,
+    &::after {
+      background-color: currentColor;
+    }
+  }
+
+  &.is-active {
+    .hamburger-inner {
+      background-color: #fff;
+
+      &::before,
+      &::after {
+        background-color: #fff;
+      }
+    }
+  }
+}
+
+.l-header__nav {
+  position: fixed;
+  inset: 0 -100% 0 100%;
+  z-index: 100;
+  background-color: #4e483ae6;
+  transition: 0.3s ease;
+
+  @include media("md") {
+    inset: revert;
+    background-color: revert;
+    position: revert;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    gap: rem(40);
+    color: #fff;
+
+    @include media("md") {
+      color: #707070;
+      flex-direction: row;
+    }
+  }
+
+  .open & {
+    transform: translateX(-100%);
+  }
 }

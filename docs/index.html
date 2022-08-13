@@ -13,6 +13,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="./css/libs/hamburgers.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/index.css">
     <script src="/js/index.js" defer></script>
   </head>
@@ -20,7 +21,14 @@
     <header class="l-header">
       <div class="l-header__container c-containerWrapper">
         <div class="l-header__brand"><a href=""><img src="/img/logo.svg" alt="" width="135" height="26"></a></div>
-        <button class="l-header__navBtn"><i class="fas fa-bars"></i><span class="sr-only">MENU</span></button>
+        <button class="l-header__navBtn hamburger hamburger--collapse" onclick="document.querySelector('html').classList.toggle('open');document.querySelector('.l-header__navBtn').classList.toggle('is-active');"><span class="hamburger-box"><span class="hamburger-inner"></span></span><span class="sr-only">MENU</span></button>
+        <nav class="l-header__nav">
+          <ul>
+            <li><a href="/">ホーム</a></li>
+            <li><a href="/content/">サービス案内</a></li>
+            <li><a href="/contact/">お問い合わせ</a></li>
+          </ul>
+        </nav>
       </div>
     </header>
     <section class="l-hero" style="background-image:url(img/hero.webp)">

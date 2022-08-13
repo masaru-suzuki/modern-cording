@@ -5,6 +5,12 @@ header.l-header
     .l-header__brand
       a(href="")
         img(src="/img/logo.svg", alt="" ,width="135", height="26")
-    button.l-header__navBtn
-      i.fas.fa-bars
+    button.l-header__navBtn.hamburger.hamburger--collapse(onclick="document.querySelector('html').classList.toggle('open');document.querySelector('.l-header__navBtn').classList.toggle('is-active');")
+      span.hamburger-box: span.hamburger-inner
+      //- i.fas.fa-times
       span.sr-only MENU
+    nav.l-header__nav
+      ul
+        li: a(href="/") ホーム
+        li: a(href="/content/") サービス案内
+        li: a(href="/contact/") お問い合わせ

@@ -1,0 +1,47 @@
+@use "../foundation/index" as *;
+
+.p-plans {
+  position: relative;
+  padding: var(--v-space) 0;
+  background-color: #e9e5e9;
+}
+
+.p-plansContainer {
+  display: grid;
+  gap: rem(27);
+
+  @include media("md") {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.p-plan {
+  display: flex;
+  flex-direction: column;
+  padding: rem(60) rem(27);
+  border-radius: rem(20);
+  background-color: #fff;
+
+  .c-btn {
+    width: auto;
+  }
+}
+
+.p-plan__title {
+  margin-bottom: rem(38);
+  font-family: var(--font-gothic);
+  font-size: clamp_vw($min: 26, $max: 30);
+  font-weight: 400;
+}
+
+.p-plan__desc {
+  font-size: clamp_vw($min: 16, $max: 18);
+  margin-bottom: rem(38);
+}
+
+.p-plan__price {
+  margin-top: auto;
+  margin-bottom: rem(22);
+  font-size: rem(26);
+  font-weight: bold;
+}
