@@ -87,6 +87,11 @@
     "body": ["font-size: rem($1);"],
     "description": "font-sizeのmixin"
   },
+  "font-size clamp": {
+    "prefix": "fzc",
+    "body": ["font-size: clamp_vw(\\$min: $1, \\$max: $2);"],
+    "description": "font-sizeのmixin clampバージョン"
+  },
   "not supports": {
     "prefix": "notsupport",
     "body": "@supports not ($1: $2) {$3}",

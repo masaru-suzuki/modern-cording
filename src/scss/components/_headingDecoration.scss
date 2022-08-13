@@ -19,6 +19,10 @@
     margin-bottom: 2em;
     color: #707070;
     font-family: "Montserrat", sans-serif;
-    font-size: fz(18);
+    font-size: rem(18);
+  }
+
+  .m-entry & {
+    font-size: clamp_vw($min: 30, $max: 48);
   }
 }

@@ -1,0 +1,29 @@
+@use "../foundation/index" as *;
+
+.m-entry {
+  padding-bottom: var(--v-space);
+  background-color: #fff;
+}
+
+.m-entry__container {
+  font-size: clamp_vw($min: 16, $max: 18);
+
+  :where(h1, h2, h3, h4, h5, h6, p, figure, ul) {
+    margin-top: revert;
+    margin-bottom: revert;
+    padding: revert;
+    list-style: revert;
+  }
+
+  p {
+    margin: 1.8em 0;
+  }
+
+  & > :first-child {
+    margin-top: 0;
+  }
+
+  & > :last-child {
+    margin-bottom: 0;
+  }
+}

@@ -1,3 +1,5 @@
+@use "../foundation/index" as *;
+
 .c-containerWrapper {
   // 横幅と左右の余白: widthで調整するパターン
   position: relative;
@@ -15,4 +17,8 @@
 
   // 横幅と左右の余白: gridで調整するパターン
   // max-width: inherit;
+
+  .m-entry & {
+    max-width: rem(720);
+  }
 }
